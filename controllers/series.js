@@ -1,19 +1,19 @@
-const Serie = require('../models/serie')
-
-const index = (req, res) => {
+const index = ({ Serie }, req, res) => {
     Serie.find({}, (err, docs) => {
         res.render('series/index', { series: docs })
     })  
 }
-const nova = (req, res) => {
-    const serie = new Serie({
-        name: 'Friends',
-        status: 'watched'
-    })
-    serie.save(() => console.log('saved'))
+const novaProcess = ({ Serie }, req, res) => {
+    const serie = new Serie(req.body)
+    serie.save(() => {
+       res.redirect('/series') 
+    }) 
+}
+
+const novaForm = (req, res) => {
     res.render('series/nova')
 }
 
 module.exports = {
-    index, nova
+    index, novaProcess, novaForm
 }
