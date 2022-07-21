@@ -10,6 +10,9 @@
                             <label for="name" class="form-label">Nome da série</label>
                             <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" placeholder="Informe o nome">
                             <div id="nameHelp" class="form-text">Nome da série a ser salvo.</div>
+                            <% if(errors && errors.indexOf('name') >=0 ) { %>
+                                <div id="nameHelp" class="form-text">Por favor, informe o nome da série</div>
+                            <% } %>
                         </div>
                         <div class="form-group">
                             <label for="status">Situação:</label>
